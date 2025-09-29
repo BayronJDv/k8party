@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: salsero-pod
+  namespace: salsa
+  labels:
+    app: bayron2
+  annotations:
+    descripcion: "Este pod esta que se baila"
+    metodo: "accede por medio de tolerations y nodeaffinity"
+    owner: "Bayron Jojoa"
+    contacto: "bayron.jojoa@correounivalle.edu.com"
+spec:
+  containers:
+    - name: salsasi
+      image: nginx
+  tolerations:
+    - key: "music"
+      operator: "Equal"
+      value: "sabor-latino"
+      effect: "NoSchedule"
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+          - matchExpressions:
+              - key: style
+                operator: In
+                values:
+                  - latino
+  
