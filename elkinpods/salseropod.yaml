@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: salseroelkin-pod
+  namespace: salsa
+  labels:
+    app: elkin2
+  annotations:
+    descripcion: "Poneme la Cita de Gali Geleano Ve!"
+    metodo: "accede por medio de tolerations y nodeaffinity"
+    owner: "Elkin Tovar"
+    contacto: "elkin.tovar@correounivalle.edu.com"
+spec:
+  containers:
+    - name: salsasita
+      image: nginx
+  tolerations:
+    - key: "music"
+      operator: "Equal"
+      value: "sabor-latino"
+      effect: "NoSchedule"
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+          - matchExpressions:
+              - key: style
+                operator: In
+                values:
+                  - latino
+  
