@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: salsacami-pod
+  namespace: salsa
+  labels:
+    app: camilo2
+  annotations:
+    descripcion: "Este pod escucha mucha salsa romantica"
+    metodo: "accede por medio de tolerations y nodeaffinity"
+    owner: "Camilo Urbano"
+    contacto: "esteban.urbano@correounivalle.edu.co"
+spec:
+  containers:
+    - name: salsacamilo
+      image: nginx
+  tolerations:
+    - key: "music"
+      operator: "Equal"
+      value: "sabor-latino"
+      effect: "NoSchedule"
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+          - matchExpressions:
+              - key: style
+                operator: In
+                values:
+                  - latino
+  
