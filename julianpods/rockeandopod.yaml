@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: rockeando-ando-pod
+  namespace: rock
+  labels:
+    app: julianp
+  annotations:
+    descripcion: "play Wake Me Up When September Ends de Green Day, please"
+    metodo: "accede por medio de tolerations"
+    owner: "julianpg"
+    contacto: "julian.palco@correounivalle.edu.co"
+spec:
+  containers:
+    - name: rockeando-ando
+      image: nginx
+  tolerations:
+    - key: "music"
+      operator: "Equal"
+      value: "guitarra-electrica"
+      effect: "NoSchedule"

@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: rock-pod
+  namespace: rock
+  labels:
+    app: juanmvm1
+  annotations:
+    descripcion: "Este pod le gusta escuchar hard rock y le gustaria escuchar Save me"
+    metodo: "accede por medio de tolerations"
+    owner: "Juan Manuel vm"
+    contacto: "juan.vargas.munoz@correounivalle.edu.co"
+spec:
+  containers:
+    - name: rockeando
+      image: nginx
+  tolerations:
+    - key: "music"
+      operator: "Equal"
+      value: "guitarra-electrica"
+      effect: "NoSchedule"
