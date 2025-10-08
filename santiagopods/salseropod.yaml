@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: salserosantiago-pod
+  namespace: salsa
+  labels:
+    app: santiago2
+  annotations:
+    descripcion: "Poneme un temita sabroso"
+    metodo: "accede por medio de tolerations y nodeaffinity"
+    owner: "Santiago Ruiz"
+    contacto: "santiago.ruiz.cortes@correounivalle.edu.co"
+spec:
+  containers:
+    - name: salsasita
+      image: nginx
+  tolerations:
+    - key: "music"
+      operator: "Equal"
+      value: "sabor-latino"
+      effect: "NoSchedule"
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+          - matchExpressions:
+              - key: style
+                operator: In
+                values:
+                  - latino
+  
