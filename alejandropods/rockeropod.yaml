@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: radiorock-pod
+  namespace: rock
+  labels:
+    app: alejandro1
+  annotations:
+    descripcion: "Este pod pide que pongan radiohead"
+    metodo: "accede por medio de tolerations"
+    owner: "Alejandro Muñoz"
+    contacto: "munoz.cesar@correounivalle.edu.co"
+spec:
+  containers:
+    - name: depresion
+      image: nginx
+  tolerations:
+    - key: "music"
+      operator: "Equal"
+      value: "guitarra-electrica"
+      effect: "NoSchedule"
