@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: salsera-pod
+  namespace: salsa
+  labels:
+    app: diana1
+  annotations:
+    descripcion: "Este pod le gusta el baile"
+    metodo: "accede por medio de tolerations y nodeaffinity"
+    owner: "Diana Sarmiento"
+    contacto: "diana.sarmiento@correounivalle.edu.co"
+spec:
+  containers:
+    - name: salsacali
+      image: nginx
+  tolerations:
+    - key: "music"
+      operator: "Equal"
+      value: "sabor-latino"
+      effect: "NoSchedule"
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+          - matchExpressions:
+              - key: style
+                operator: In
+                values:
+                  - latino
+  

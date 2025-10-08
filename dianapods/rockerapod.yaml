@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: rockera-pod
+  namespace: rock
+  labels:
+    app: diana2
+  annotations:
+    descripcion: "Este pod disfruta el rock y quiere escuchar Bon Jovi"
+    metodo: "accede por medio de tolerations"
+    owner: "Diana Sarmiento"
+    contacto: "diana.sarmiento@correounivalle.edu.co"
+spec:
+  containers:
+    - name: queremosrock
+      image: nginx
+  tolerations:
+    - key: "music"
+      operator: "Equal"
+      value: "guitarra-electrica"
+      effect: "NoSchedule"
