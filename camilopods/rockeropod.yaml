@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: rocker-pod
+  namespace: rock
+  labels:
+    app: camilo1
+  annotations:
+    descripcion: "Este pod ama la cancion de Heroe de leyenda"
+    metodo: "accede por medio de tolerations"
+    owner: "Camilo Urbano"
+    contacto: "esteban.urbano@correounivalle.edu.co"
+spec:
+  containers:
+    - name: rockcami
+      image: nginx
+  tolerations:
+    - key: "music"
+      operator: "Equal"
+      value: "guitarra-electrica"
+      effect: "NoSchedule"
